@@ -2,6 +2,7 @@ import React, { useRef, useState } from "react"
 import { Button, Modal, Form } from "react-bootstrap"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faFolderPlus } from "@fortawesome/free-solid-svg-icons"
+import { faPlus } from "@fortawesome/free-solid-svg-icons"
 import { database } from "../../firebase"
 import { useAuth } from "../../contexts/AuthContext"
 import { ROOT_FOLDER } from "../../hooks/useFolder"
@@ -34,13 +35,20 @@ export default function AddFolderButton({ currentFolder }) {
     setName("")
     closeModal()
   }
+  
+  //<FontAwesomeIcon icon={faPlus} />   to use plus icon
+
 
   return (
     <>
-      <Button onClick={openModal} variant="outline-success" size="sm">
-        <FontAwesomeIcon icon={faFolderPlus} />
+      <Button onClick={openModal} variant="outline-success" size="lg">
+      Create a Post
       </Button>
       <Modal show={open} onHide={closeModal}>
+        <Modal.Header>
+          <Modal.Title>Create a Post</Modal.Title>
+        </Modal.Header>
+        
         <Form onSubmit={handleSubmit}>
           <Modal.Body>
             <Form.Group>
@@ -50,9 +58,10 @@ export default function AddFolderButton({ currentFolder }) {
                 required
                 ref={titleRef}
               />
-              <Form.Label>Text</Form.Label>
+              <Form.Label>Content</Form.Label>
               <Form.Control
                 type="text"
+                as="textarea"
                 required
                 ref={contentRef}
               />
