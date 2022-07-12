@@ -31,6 +31,7 @@ export default function AddFolderButton({ currentFolder }) {
       content: contentRef.current.value,
       userId: currentUser.uid,
       createdAt: database.getCurrentTimestamp(),
+      likes: 0,
     })
     setName("")
     closeModal()

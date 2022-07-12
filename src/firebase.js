@@ -13,11 +13,7 @@ databaseURL: process. env.REACT_APP_FIREBASE_DATABASE_URL,
   appId: process.env.REACT_APP_FIREBASE_APP_ID,
 })
 
-if (!firebase.apps.length) {
-  firebase.initializeApp(firebaseConfig)
-} else {
-  firebase.app()
-}
+
 
 const firestore = app.firestore()
 export const database = {
