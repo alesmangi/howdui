@@ -22,9 +22,15 @@ export default function Dashboard() {
     //    data.docs.forEach(item => {
     //        setPosts([...posts,item.data()])
     //    })
-        setPosts(data.docs.map( d => d.data()))
+        const currentPosts = []
+        data.docs.forEach(d=>{
+            let doc = d.data()
+            doc.id = d.id
+            currentPosts.push(doc)
+        })
+        setPosts(currentPosts)
+   // setPosts(data.docs.map( d => d.data()))
     }
-
 
     return (
         <>

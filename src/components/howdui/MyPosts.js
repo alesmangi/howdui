@@ -7,9 +7,6 @@ import { database } from "../../firebase"
 import Navbar from "./Navbar"
 import Post from "./Post"
 
-
-
-
 export default function MyPosts() {
     const [posts, setPosts] = useState([]);
     const { currentUser,} = useAuth()

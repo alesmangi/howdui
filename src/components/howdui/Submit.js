@@ -13,6 +13,7 @@ export default function AddFolderButton({ currentFolder }) {
   const { currentUser } = useAuth()
   const titleRef = useRef()
   const contentRef = useRef()
+  const idRef = useRef()
 
   function openModal() {
     setOpen(true)
@@ -24,10 +25,10 @@ export default function AddFolderButton({ currentFolder }) {
 
   function handleSubmit(e) {
     e.preventDefault()
-
    
     database.posts.add({
       title: titleRef.current.value,
+      id: idRef.current.value,
       content: contentRef.current.value,
       userId: currentUser.uid,
       createdAt: database.getCurrentTimestamp(),
