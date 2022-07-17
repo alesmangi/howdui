@@ -28,7 +28,7 @@ export default function AddFolderButton({ currentFolder }) {
    
     database.posts.add({
       title: titleRef.current.value,
-      id: idRef.current.value,
+      //id: idRef.current.value,
       content: contentRef.current.value,
       userId: currentUser.uid,
       createdAt: database.getCurrentTimestamp(),

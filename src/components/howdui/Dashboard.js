@@ -39,7 +39,6 @@ export default function Dashboard() {
         <Container fluid>
             {
                 posts && posts.map(post => {
-                    console.log(post.content)
                     return (
                         <>
                        

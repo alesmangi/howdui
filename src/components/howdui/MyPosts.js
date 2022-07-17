@@ -23,7 +23,13 @@ export default function MyPosts() {
     //    data.docs.forEach(item => {
     //        setPosts([...posts,item.data()])
     //    })
-        setPosts(data.docs.map( d => d.data()))
+        const currentPosts = []
+        data.docs.forEach(d => {
+            let doc = d.data()
+            doc.id = d.id
+            currentPosts.push(doc)
+        })
+        setPosts(currentPosts)
     }
 
     /*
@@ -46,7 +52,7 @@ export default function MyPosts() {
         
             {
                 posts && posts.map(post => {
-                    console.log(post.content)
+                    
                     return (
                         <>
                        
