@@ -33,12 +33,12 @@ export default function AddFolderButton({ currentFolder }) {
       userId: currentUser.uid,
       createdAt: database.getCurrentTimestamp(),
       likes: 0,
-    })
-    setName("")
-    closeModal().then(() => {
+    }).then(() => {
       window.alert("you created a post!")
       window.location.reload();
     })
+    setName("")
+    closeModal()
   }
   
   //<FontAwesomeIcon icon={faPlus} />   to use plus icon
