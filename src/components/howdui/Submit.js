@@ -35,7 +35,10 @@ export default function AddFolderButton({ currentFolder }) {
       likes: 0,
     })
     setName("")
-    closeModal()
+    closeModal().then(() => {
+      window.alert("you created a post!")
+      window.location.reload();
+    })
   }
   
   //<FontAwesomeIcon icon={faPlus} />   to use plus icon

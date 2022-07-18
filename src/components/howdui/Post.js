@@ -10,10 +10,15 @@ import ModalHeader from "react-bootstrap/esm/ModalHeader"
 
 
 function likePost(post) {
-database.posts.doc(post.id).update({"likes" : post.likes+1})
+database.posts.doc(post.id).update({"likes" : post.likes+1}).then(() => {
+  window.alert("you clapped a post!")
+  window.location.reload();
+})
  // const db = getFirestore();
  // var likeRef = db.collection("posts").doc("posts.likes");
  // const increment = firebase.firestore.FieldValue.increment(1);
+ 
+
 }
 
 export default function Post({ post }) {
@@ -34,6 +39,9 @@ export default function Post({ post }) {
     database.posts.doc(post.id).collection("comments").add({
       content: contentRef.current.value,
       createdAt: database.getCurrentTimestamp(),
+    }).then(() => {
+      window.alert("you commented on a post!")
+      window.location.reload();
     })
     closeModal()
   }
@@ -63,20 +71,25 @@ export default function Post({ post }) {
   return (
     <>
     <Container >
-      <Card key={post.id} style={{cursor:"pointer"}} onClick={openModal} >
-        <Card.Body>
+      <Card key={post.id}   >
+        <Card.Body style={{cursor:"pointer"}} onClick={openModal}>
           <Card.Title>{post.title}</Card.Title>
           <Card.Text>{post.content}</Card.Text>
-             <Card.Text>{post.likes}
-             <Button onClick={() => likePost(post)} variant="outline-success" size="sm">
-    Clap </Button> </Card.Text> 
+             
+    </Card.Body>
+    <Card.Body>
+      <Card.Text>{post.likes} claps
+              </Card.Text> <Button onClick={() => likePost(post)} variant="outline-success" size="sm">
+    Clap </Button>
     </Card.Body>
       </Card>
+      
     </Container>
 
     <Modal show={open} onHide={closeModal} size="xl" onShow={useEffect(() => {
     fetchComments()
   }, [])}>
+    <Container>
       <ModalHeader>
         <Card>
           <Card.Title>{post.title}</Card.Title>
@@ -94,7 +107,11 @@ export default function Post({ post }) {
               Comment
             </Button>
       </Form>
-      {
+      
+        <Card>
+          <Card.Title>Comments</Card.Title>
+           {'\n'}
+        {
         comments && comments.map(comment => {
           return (
             <>
@@ -108,6 +125,11 @@ export default function Post({ post }) {
         })
         
         }
+        </Card>
+        
+
+      </Container>
+      
     </Modal>
     </>
   )
