@@ -115,11 +115,11 @@ export default function Post({ post }) {
         comments && comments.map(comment => {
           return (
             <>
-
+            <Card.Body>
             <div className={comment.id} key={comment.id}>
               {comment.content}
             </div>
-
+            </Card.Body>
             </>
           )
         })
