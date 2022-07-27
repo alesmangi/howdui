@@ -14,10 +14,7 @@ database.posts.doc(post.id).update({"likes" : post.likes+1}).then(() => {
   window.alert("you clapped a post!")
   window.location.reload();
 })
- // const db = getFirestore();
- // var likeRef = db.collection("posts").doc("posts.likes");
- // const increment = firebase.firestore.FieldValue.increment(1);
- 
+
 
 }
 

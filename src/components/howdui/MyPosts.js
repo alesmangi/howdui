@@ -14,15 +14,11 @@ export default function MyPosts() {
     useEffect(() => {
         fetchPosts();
     }, [])
-    /*
-        TODO: order the user's posts by newest
-    */
+   
     const fetchPosts = async() => {
         const response = database.posts.where('userId', '==', currentUser.uid);
         const data = await response.get();
-    //    data.docs.forEach(item => {
-    //        setPosts([...posts,item.data()])
-    //    })
+   
         const currentPosts = []
         data.docs.forEach(d => {
             let doc = d.data()
@@ -32,18 +28,6 @@ export default function MyPosts() {
         setPosts(currentPosts)
     }
 
-    /*
-    database.posts.where('userId', '==', currentUser.uid).get().then((snapshot) => {
-        console.log(snapshot.size)
-        snapshot.forEach((document) => {
-            userPosts.push({
-                ...document.data(),
-                key: document.id,
-            })
-            console.log(document.data().title)
-        })
-    })
-   */
 
     return (
         <>
