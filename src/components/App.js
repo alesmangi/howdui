@@ -16,13 +16,10 @@ function App() {
     <Router>
       <AuthProvider>
         <Switch>
-          {/* Drive (IGNORE THIS ONE)*/}
+          {/* Howdui */}
           <PrivateRoute exact path="/" component={Dashboard} />
-          <PrivateRoute exact path="/folder/:folderId" component={Dashboard} />
           <PrivateRoute exact path="/submit" component={Submit} />
           <PrivateRoute exact path="/my-posts" component={MyPosts} />
-
-          {/* Howdui */}
 
           {/* Profile */}
           <PrivateRoute path="/user" component={Profile} />

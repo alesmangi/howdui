@@ -1,13 +1,9 @@
 import React, { useRef, useState } from "react"
 import { Button, Modal, Form } from "react-bootstrap"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faFolderPlus } from "@fortawesome/free-solid-svg-icons"
-import { faPlus } from "@fortawesome/free-solid-svg-icons"
 import { database } from "../../firebase"
 import { useAuth } from "../../contexts/AuthContext"
-import { ROOT_FOLDER } from "../../hooks/useFolder"
 
-export default function AddFolderButton({ currentFolder }) {
+export default function AddPostButton() {
   const [open, setOpen] = useState(false)
   const [name, setName] = useState("")
   const { currentUser } = useAuth()
@@ -40,8 +36,6 @@ export default function AddFolderButton({ currentFolder }) {
     setName("")
     closeModal()
   }
-  
-  //<FontAwesomeIcon icon={faPlus} />   to use plus icon
 
 
   return (

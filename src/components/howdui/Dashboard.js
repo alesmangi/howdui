@@ -19,9 +19,7 @@ export default function Dashboard() {
     const fetchPosts = async() => {
         const response = database.posts.orderBy("createdAt", "desc");
         const data = await response.get();
-    //    data.docs.forEach(item => {
-    //        setPosts([...posts,item.data()])
-    //    })
+
         const currentPosts = []
         data.docs.forEach(d=>{
             let doc = d.data()
@@ -29,7 +27,7 @@ export default function Dashboard() {
             currentPosts.push(doc)
         })
         setPosts(currentPosts)
-   // setPosts(data.docs.map( d => d.data()))
+
     }
 
     return (
